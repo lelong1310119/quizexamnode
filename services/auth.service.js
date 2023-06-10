@@ -18,15 +18,16 @@ export const authServices = {
       gender: gender,
     });
     await newUser.save();
-    return newUser.select("-password");
+    newUser.password = "";
+    return newUser;
   },
   login: async (email) => {
-    const user = await Users.findOne({ email: email });
-    return user.select("-password");
+    const user = await Users.findOne({ email: email }).select("-password");
+    return user;
   },
   getUser: async (resultId) => {
     const user = await Users.findById(resultId)
       .select("-password");
-    return user.select("-password");
+    return user;
   },
 };

@@ -4,6 +4,9 @@ import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import auth from "./routes/auth.route.js";
 import question from "./routes/question.route.js"
+import exam from "./routes/exam.route.js"
+import examHistory from "./routes/examHistory.route.js"
+
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -20,6 +23,8 @@ const PORT = process.env.PORT || 5000;
 const URI = process.env.DATABASE_URL;
 app.use("/api", auth);
 app.use("/api", question);
+app.use("/api", exam)
+app.use("/api", examHistory)
 
 mongoose.set("strictQuery", false);
 mongoose

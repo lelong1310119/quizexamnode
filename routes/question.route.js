@@ -5,9 +5,10 @@ import { auth } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.post("/questions/create", auth , questionController.createQuestion);
-router.get("/questions/getbyuser", auth , questionController.getList);
-router.patch("/questions/update", auth , questionController.updateQuestion);
-router.delete("/questions/delete", auth , questionController.deleteQuesiton);
+router.post("/questions", auth , questionController.createQuestion);
+router.get("/questions/get_by_user", auth , questionController.getList);
+router.get("/questions/get_all", auth , questionController.getListActive);
+router.patch("/questions", auth , questionController.updateQuestion);
+router.delete("/questions/:id", auth , questionController.deleteQuesiton);
 
 export default router;

@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const questionSchema = new mongoose.Schema(
+const examSchema = new mongoose.Schema(
     {
-        content: {
+        name: {
             type: String,
             trim: true,
             required: true,
@@ -13,21 +13,16 @@ const questionSchema = new mongoose.Schema(
             required: true,
             default: "1"
         },
+        questions: [{ type: mongoose.Types.ObjectId, ref: "Questions" }],
         user: {type: mongoose.Types.ObjectId, ref: "Users"},
-        answers: [{content: {
-            type: String,
-            trim: true,
-            required: true,
-        },
-        isRight: {
-            type: Boolean,
+        time: {
+            type: Number,
             required: true,
         }
-        }]
     },
     {
         timestamps: true,
     }
 )
 
-export const Questions = mongoose.model("Questions", questionSchema);
+export const Exams = mongoose.model("Exams", examSchema);
